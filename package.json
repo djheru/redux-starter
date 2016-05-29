@@ -3,15 +3,9 @@
   "version": "1.0.0",
   "description": "Starter kit for React and Redux",
   "scripts": {
-    "prestart": "babel-node tools/startMessage.js",
-    "start": "npm-run-all --parallel test:watch open:src lint:watch",
-    "open:src": "babel-node tools/srcServer.js",
-    "lint": "node_modules/.bin/esw webpack.config.* src tools",
-    "lint:watch": "npm run lint -- --watch",
-    "test": "mocha --reporter progress tools/testSetup.js \"src/**/*.test.js\"",
-    "test:watch": "npm run test -- --watch"
+
   },
-  "author": "Philip",
+  "author": "Philip Damra",
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "6.8.0",
@@ -44,7 +38,6 @@
     "eslint-plugin-import": "1.6.1",
     "eslint-plugin-react": "5.0.1",
     "eslint-watch": "2.1.11",
-    "eventsource-polyfill": "0.9.6",
     "expect": "1.19.0",
     "express": "4.13.4",
     "extract-text-webpack-plugin": "1.0.1",
