@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import * as courseActions from '../../actions/courseActions';
 
 class CoursesPage extends React.Component{
   constructor(props, context) {
@@ -15,7 +17,7 @@ class CoursesPage extends React.Component{
   }
 
   onClickSave() {
-    alert(`saving ${this.state.course.title}`);
+    this.props.dispatch(courseActions.createCourse(this.state.course));
   }
 
   onTitleChange(event) {
@@ -24,10 +26,16 @@ class CoursesPage extends React.Component{
     this.setState({course});
   }
 
+  courseRow(course, index) {
+    return (
+      <div key={index}>{course.title}</div>
+    );
+  }
   render() {
     return (
       <div className="jumbotron">
         <h1>Courses</h1>
+        {this.props.courses.map(this.courseRow)}
         <h2>Add Course</h2>
 
         <input
@@ -45,4 +53,15 @@ class CoursesPage extends React.Component{
 
 }
 
-export default CoursesPage;
+CoursesPage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  courses: PropTypes.array.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+  //return properties we'd like to see exposed to our component
+  return {
+    courses: state.courses
+  };
+}
+export default connect(mapStateToProps)(CoursesPage);
