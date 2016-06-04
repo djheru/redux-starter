@@ -6,7 +6,7 @@ import * as courseActions from '../../actions/courseActions';
 
 class CoursesPage extends React.Component{
   constructor(props, context) {
-    super(props, context);
+    super(props, context);/*
 
     this.state = {
       course: { title: "" }
@@ -14,9 +14,9 @@ class CoursesPage extends React.Component{
     // Do the binding in the constructor, not the render() method.
     // in render(), it creates a new function, which is not performant
     this.onTitleChange = this.onTitleChange.bind(this);
-    this.onClickSave = this.onClickSave.bind(this);
+    this.onClickSave = this.onClickSave.bind(this);*/
   }
-
+/*
   onClickSave() {
     this.props.actions.createCourse(this.state.course);
   }
@@ -25,7 +25,7 @@ class CoursesPage extends React.Component{
     const course = this.state.course;
     course.title = event.target.value;
     this.setState({course});
-  }
+  }*/
 
   courseRow(course, index) {
     return (
@@ -33,6 +33,14 @@ class CoursesPage extends React.Component{
     );
   }
   render() {
+    return (
+      <div className="jumbotron">
+        <h1>Courses</h1>
+        {this.props.courses.map(this.courseRow)}
+      </div>
+    );
+  }
+  /*render() {
     return (
       <div className="jumbotron">
         <h1>Courses</h1>
@@ -50,7 +58,7 @@ class CoursesPage extends React.Component{
           onClick={this.onClickSave} />
       </div>
     );
-  }
+  }*/
 
 }
 
