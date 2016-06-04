@@ -13,7 +13,7 @@ const SelectInput = ({name, label, onChange, defaultOption, value, error, option
           className="form-control">
 
           <option value="">{defaultOption}</option>
-          {options.map(option => <option key={option.value} value={option.value}>{option.text}</option>)}
+          {options && options.map(option => <option key={option.value} value={option.value}>{option.text}</option>)}
 
         </select>
         {error && <div className="alert alert-danger">{error}</div>}

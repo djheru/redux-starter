@@ -1,9 +1,16 @@
 import * as types from './actionTypes';
-import courseApi from '../api/mockCourseApi';
+import CourseApi from '../api/mockCourseApi';
 
-export function createCourse(course) {
+export function createCourseSuccess(course) {
   return {
-    type: types.CREATE_COURSE,
+    type: types.CREATE_COURSE_SUCCESS,
+    course
+  };
+}
+
+export function updateCourseSuccess(course) {
+  return {
+    type: types.UPDATE_COURSE_SUCCESS,
     course
   };
 }
@@ -15,13 +22,26 @@ export function loadCoursesSuccess(courses) {
   };
 }
 
+export function saveCourse(course) {
+  return function(dispatch) {
+    return CourseApi.saveCourse(course)
+      .then(course => {
+        course.id ? dispatch(updateCourseSuccess(course)) :
+          dispatch(createCourseSuccess(course));
+      })
+      .catch(err => {
+        throw(err);
+      });
+  };
+}
+
 export function loadCourses() {
   //thunks
   //instead of returning an action like above,
   //thunks return a function that calls dispatch(actioncreator) once
   //the promise resolves (or does something else if there's an error)
   return function (dispatch) {
-    return courseApi.getAllCourses()
+    return CourseApi.getAllCourses()
       .then(courses => {
         dispatch(loadCoursesSuccess(courses));
       })

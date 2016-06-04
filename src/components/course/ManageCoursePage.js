@@ -10,33 +10,64 @@ class ManageCoursePage extends React.Component {
 
   constructor(props, context) {
     super(props, context);
+
     this.state = {
       course: Object.assign({}, this.props.course),
-      errors: {
-
-      }
+      errors: {}
     };
+
+    this.updateCourseState = this.updateCourseState.bind(this);
+    this.saveCourse = this.saveCourse.bind(this);
+  }
+
+  updateCourseState(event) {
+    const field = event.target.name;
+    let course = this.state.course;
+    course[field] = event.target.value;
+    return this.setState({course});
+  }
+
+  saveCourse(event) {
+    event.preventDefault();
+    this.props.actions.saveCourse(this.state.course);
+    this.context.router.push('/courses');
   }
 
   render() {
 
     return (
       <CourseForm
-        allAuthors={[]}
+        allAuthors={this.props.authors}
+        onChange={this.updateCourseState}
+        onSave={this.saveCourse}
         errors={this.state.errors}
-        course={this.state.course} />
+        course={this.state.course}
+        />
     );
 
   }
 }
 
 ManageCoursePage.propTypes = {
-  course: PropTypes.object.isRequired
+  authors: PropTypes.array.isRequired,
+  course: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
+};
+
+ManageCoursePage.contextTypes = {
+  router: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   let course = { id: '', watchHref: '', title: '', authorId: '', length: '', category: '' };
+  const authorsFormattedForDropdown = state.authors.map(author => {
+    return {
+      value: author.id,
+      text: `${author.firstName} ${author.lastName}`
+    };
+  });
   return {
+    authors: authorsFormattedForDropdown,
     course: course
   };
 }
