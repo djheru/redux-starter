@@ -38,7 +38,8 @@ LoadingDots.defaultProps = {
 };
 
 LoadingDots.propTypes = {
-  //myProp: PropTypes.string.isRequired
+  interval: PropTypes.integer,
+  dots: PropTypes.integer
 };
 
 export default LoadingDots;

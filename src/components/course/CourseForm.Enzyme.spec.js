@@ -9,7 +9,6 @@ function setup(passedProps = {}) {
     course: {},
     saving: false,
     errors: {},
-    saving: false,
     onSave: () => {},
     onChange: () => {}
   };
