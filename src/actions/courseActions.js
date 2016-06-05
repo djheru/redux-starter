@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import CourseApi from '../api/mockCourseApi';
+import {beginAjaxCall} from './ajaxStatusActions';
 
 export function createCourseSuccess(course) {
   return {
@@ -24,6 +25,7 @@ export function loadCoursesSuccess(courses) {
 
 export function saveCourse(course) {
   return function(dispatch) {
+    dispatch(beginAjaxCall);
     return CourseApi.saveCourse(course)
       .then(course => {
         course.id ? dispatch(updateCourseSuccess(course)) :
@@ -41,6 +43,7 @@ export function loadCourses() {
   //thunks return a function that calls dispatch(actioncreator) once
   //the promise resolves (or does something else if there's an error)
   return function (dispatch) {
+    dispatch(beginAjaxCall());
     return CourseApi.getAllCourses()
       .then(courses => {
         dispatch(loadCoursesSuccess(courses));
