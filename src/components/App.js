@@ -21,6 +21,7 @@ App.propTypes = {
 };
 
 function mapStateToProps(state) {
+  console.log('calculating ajaxStatus: ', state.ajaxStatus);
   return {
     loading: state.ajaxStatus > 0
   };
