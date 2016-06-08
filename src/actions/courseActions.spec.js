@@ -6,8 +6,8 @@ import * as courseActions from './courseActions';
 import * as types from './actionTypes';
 
 //test sync actions
-describe('Course Actions', () => {
-  describe('createCourseSuccess', () => {
+describe('Course Actions', function() {
+  describe('createCourseSuccess', function() {
     it('creates a CREATE_COURSE_SUCCESS action', () => {
       //arrange
       const course = {id: 'clean-code', title: 'Clean Code'};
@@ -29,7 +29,8 @@ describe('Course Actions', () => {
 //async actions
 const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
-describe('Async Actions', () => {
+describe('Async Actions', function() {
+  this.timeout(0);
 
   it('creates BEGIN_AJAX_CALL and LOAD_COURSES_SUCCESS actions when loading courses', (done) => {
     let mockCourseArray = [{id: 'clean-code', title: 'Clean Code'}];
