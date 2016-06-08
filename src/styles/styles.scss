@@ -1,0 +1,113 @@
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$fa-font-path: "~font-awesome/fonts";
+@import "variables";
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "theme";
+@import "~font-awesome/scss/font-awesome";
+@import "~toastr/toastr.scss";
+@import "transitions";
+@import "spinner";
+
+body {
+  margin-top: 45px;
+  background: url('./bg.png');
+}
+nav.navbar {
+  margin-bottom: 0;
+}
+.navbar-fixed-top #navbar {
+  max-height: 480px;
+}
+.alert {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+.well-sm {
+  padding: 14px 16px;
+}
+ul.checklist {
+  line-height: 1.5;
+}
+.modal-body h3 {
+  margin-top: 6px;
+}
+.modal-body hr {
+  margin-top: 16px;
+  margin-bottom: 12px;
+}
+span.fa {
+  padding-right: 4px;
+}
+a.close > span{
+  color: $text-muted;
+  font-weight: bold;
+}
+#login-dp{
+  min-width: 250px;
+  padding: 14px 14px 0;
+  overflow:hidden;
+  background-color:rgba(255,255,255,.8);
+
+  div.alert {
+    padding: 8px 10px;
+    margin-bottom: 10px;
+
+    span.fa {
+      margin-right: 4px;
+    }
+  }
+}
+#login-dp h6 {
+  font-size: 1.2em;
+}
+div.section-separator > hr {
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+#login-dp .help-block{
+  font-size:12px
+}
+#login-dp .bottom{
+  background-color:rgba(255,255,255,.8);
+  border-top:1px solid #ddd;
+  clear:both;
+  padding:14px;
+}
+#login-dp .social-buttons {
+  margin-bottom: 6px;
+}
+#login-dp .form-group {
+  margin-bottom: 10px;
+}
+.btn-fb{
+  color: #fff;
+  background-color:#3b5998;
+}
+.btn-fb:hover{
+  color: #fff;
+  background-color:#496ebc
+}
+.btn-go{
+  color: #4285F4;
+  background-color:#fff;
+  border: 1px solid #4285F4;
+}
+.btn-go:hover{
+  color: #fff;
+  background-color:#4285F4;
+}
+@media(min-width:768px){
+  .modal-dialog {
+    padding-top: 80px;
+  }
+}
+@media(max-width:768px){
+  #login-dp{
+    background-color: rgba(102,102,102,.8);
+    color: #fff;
+  }
+  #login-dp .bottom{
+    background-color: inherit;
+    border-top:0 none;
+  }
+}
